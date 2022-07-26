@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
+
 
 namespace HWHero
 {
@@ -21,9 +23,8 @@ namespace HWHero
 
 
             pirate1.InfoAbout(name, birthDate, eyes);
-            pirate1.Grabit();
+            pirate1.Story();
 
-            Console.Beep(1000, 500);
 
             Console.ReadKey();
 
@@ -35,6 +36,8 @@ namespace HWHero
         string name;
         int godRojdenia;
         int kolichestvoGlaz;
+        string piratType;
+        string eyeType;
 
         string agressia = "Большая";
         string jestokost = "Огромная";
@@ -50,7 +53,19 @@ namespace HWHero
              get { return agressia; }
              set { jestokost = value; }
             }
-        
+
+
+        public void Story (){
+            Console.WriteLine();
+            Console.WriteLine($"Вас приветствует пират {name}. Так как я родился в {godRojdenia} году, то я {piratType} пират и {eyeType}. У меня {agressia} агрессия " +
+                $"и {jestokost} жестокость. ");
+            Console.WriteLine("Хочу вам рассказать, как прошел мой последний поход:");
+
+            Console.WriteLine();
+            Grabit();
+            Umirat();
+        }
+
 
 
         public void InfoAbout(string namePirat, int godRojdeniaPirata, int kolichestvoGlazPirata)
@@ -58,6 +73,30 @@ namespace HWHero
             name = namePirat;
             godRojdenia = godRojdeniaPirata;
             kolichestvoGlaz = kolichestvoGlazPirata;
+
+
+            if (godRojdenia<2100)
+            {
+                piratType = "морской";
+            }
+            else
+            {
+                piratType = "космический";
+            }
+
+            if (kolichestvoGlaz<2)
+            {
+                eyeType = "предыдущие битвы оставили на моем лице следы";
+            }
+            else if (kolichestvoGlaz == 2)
+            {
+                eyeType = "я неплохо сохранился как для пирата";
+            }
+            else if (kolichestvoGlaz > 2)
+            {
+                eyeType = "я рептилоид";
+            }
+            else { }
 
         }
 
@@ -80,21 +119,26 @@ namespace HWHero
         public void Grabit()
         {
             
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if (i%2==0)
                 {
                 Console.WriteLine("Выстрелил во врага");
-                Pit();
+                    Thread.Sleep(1000);
+                    Pit();
+                    Thread.Sleep(1000);
                 }
                 else
                 {
                     Console.WriteLine("Похитил сокровище");
+                    Thread.Sleep(1000);
                     Pit();
+                    Thread.Sleep(1000);
                 }
 
             }
             PodniatFlag();
+            IgratMyziky();
 
         }
 
@@ -127,6 +171,8 @@ namespace HWHero
 
             };
 
+            Console.WriteLine("Торжественно развернул над полем битвы свой флаг.");
+
             for (int i = 0; i < 21; i++)
             {
 
@@ -145,16 +191,53 @@ namespace HWHero
                 Console.WriteLine();
 
             }
+            Console.ResetColor();
         }
 
         public void IgratMyziky()
         {
+            Console.Beep(220, 500);
+            Thread.Sleep(50);
+            Console.Beep(262, 500);
+            Thread.Sleep(50);
+            Console.Beep(294, 500);
+            Thread.Sleep(25);
+            Console.Beep(294, 500);
+            Thread.Sleep(50);
+
+            Console.Beep(294, 500);
+            Thread.Sleep(50);
+            Console.Beep(330, 500);
+            Thread.Sleep(50);
+            Console.Beep(349, 500);
+            Thread.Sleep(25);
+            Console.Beep(349, 500);
+            Thread.Sleep(50);
+
+            Console.Beep(349, 500);
+            Thread.Sleep(50);
+            Console.Beep(392, 500);
+            Thread.Sleep(50);
+            Console.Beep(330, 500);
+            Thread.Sleep(25);
+            Console.Beep(349, 500);
+            Thread.Sleep(50);
+
+
+            Console.Beep(294, 500);
+            Thread.Sleep(50);
+            Console.Beep(262, 500);
+            Thread.Sleep(50);
+            Console.Beep(262, 500);
+            Thread.Sleep(25);
+            Console.Beep(294, 500);
+            Thread.Sleep(50);
 
         }
 
         public void Umirat()
         {
-            Console.WriteLine("Умер");
+            Console.WriteLine("И умер от полученных в бою ран.");
         }
 
 
