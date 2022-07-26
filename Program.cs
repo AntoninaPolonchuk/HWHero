@@ -13,21 +13,28 @@ namespace HWHero
         static void Main(string[] args)
         {
             Pirate pirate1 = new Pirate();
+   
+            Console.WriteLine("Если Вас интерисует базовая комплектация пирата нажмите 1. Если Вас интерисует пользовательская версия пирата - нажмите что-то другое");
 
-            Console.WriteLine("Введите Имя пирата");
-            string name = Console.ReadLine();
-            Console.WriteLine("Введите дату рождения пирата");
-            int birthDate = int.Parse(Console.ReadLine());
-            Console.WriteLine("Введите количество глаз пирата");
-            int eyes = int.Parse(Console.ReadLine());
+            if (Console.ReadLine()=="1")
+            {
+                Pirate pirate2 = new Pirate();
+                pirate2.Story();
 
+            }
+            else 
+            {
+                Console.WriteLine("Введите Имя пирата");
+                string name = Console.ReadLine();
+                Console.WriteLine("Введите дату рождения пирата");
+                int birthDate = int.Parse(Console.ReadLine());
+                Console.WriteLine("Введите количество глаз пирата");
+                int eyes = int.Parse(Console.ReadLine());
 
-            pirate1.InfoAbout(name, birthDate, eyes);
-            pirate1.Story();
-
-
+                pirate1.InfoAbout(name, birthDate, eyes);
+                pirate1.Story();
+            }
             Console.ReadKey();
-
         }
     }
 
@@ -43,7 +50,6 @@ namespace HWHero
         string jestokost = "Огромная";
 
 
-        // свойства
         string Jestokost
         {
             get { return jestokost; }
@@ -55,10 +61,46 @@ namespace HWHero
             }
 
 
+        public Pirate()
+        {
+            name = "Джек";
+            godRojdenia = 3000;
+            kolichestvoGlaz = 4;
+        }
+
+
         public void Story (){
+
+            if (godRojdenia < 2100)
+            {
+                piratType = "морской";
+            }
+            else
+            {
+                piratType = "космический";
+            }
+
+            if (kolichestvoGlaz < 2)
+            {
+                eyeType = "предыдущие битвы оставили на моем лице следы";
+            }
+            else if (kolichestvoGlaz == 2)
+            {
+                eyeType = "я неплохо сохранился как для пирата";
+            }
+            else if (kolichestvoGlaz == 3)
+            {
+                eyeType = " я обладатель запасного";
+            }
+            else if (kolichestvoGlaz > 3)
+            {
+                eyeType = "я обладатель запасных (что крайне полезно в жизни пирата)";
+            }
+            else { }
+
             Console.WriteLine();
-            Console.WriteLine($"Вас приветствует пират {name}. Так как я родился в {godRojdenia} году, то я {piratType} пират и {eyeType}. У меня {agressia} агрессия " +
-                $"и {jestokost} жестокость. ");
+            Console.WriteLine($"Вас приветствует пират {name}. Так как я родился в {godRojdenia} году, то я {piratType} пират. Если вы обратите внимание, солько у меня глаз ({kolichestvoGlaz}), то поймете, что {eyeType}. У меня {Agressia} агрессия " +
+                $"и {Jestokost} жестокость. ");
             Console.WriteLine("Хочу вам рассказать, как прошел мой последний поход:");
 
             Console.WriteLine();
@@ -73,30 +115,6 @@ namespace HWHero
             name = namePirat;
             godRojdenia = godRojdeniaPirata;
             kolichestvoGlaz = kolichestvoGlazPirata;
-
-
-            if (godRojdenia<2100)
-            {
-                piratType = "морской";
-            }
-            else
-            {
-                piratType = "космический";
-            }
-
-            if (kolichestvoGlaz<2)
-            {
-                eyeType = "предыдущие битвы оставили на моем лице следы";
-            }
-            else if (kolichestvoGlaz == 2)
-            {
-                eyeType = "я неплохо сохранился как для пирата";
-            }
-            else if (kolichestvoGlaz > 2)
-            {
-                eyeType = "я рептилоид";
-            }
-            else { }
 
         }
 
@@ -138,7 +156,7 @@ namespace HWHero
 
             }
             PodniatFlag();
-            IgratMyziky();
+
 
         }
 
@@ -170,7 +188,7 @@ namespace HWHero
 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 
             };
-
+            Console.WriteLine();
             Console.WriteLine("Торжественно развернул над полем битвы свой флаг.");
 
             for (int i = 0; i < 21; i++)
@@ -192,47 +210,6 @@ namespace HWHero
 
             }
             Console.ResetColor();
-        }
-
-        public void IgratMyziky()
-        {
-            Console.Beep(220, 500);
-            Thread.Sleep(50);
-            Console.Beep(262, 500);
-            Thread.Sleep(50);
-            Console.Beep(294, 500);
-            Thread.Sleep(25);
-            Console.Beep(294, 500);
-            Thread.Sleep(50);
-
-            Console.Beep(294, 500);
-            Thread.Sleep(50);
-            Console.Beep(330, 500);
-            Thread.Sleep(50);
-            Console.Beep(349, 500);
-            Thread.Sleep(25);
-            Console.Beep(349, 500);
-            Thread.Sleep(50);
-
-            Console.Beep(349, 500);
-            Thread.Sleep(50);
-            Console.Beep(392, 500);
-            Thread.Sleep(50);
-            Console.Beep(330, 500);
-            Thread.Sleep(25);
-            Console.Beep(349, 500);
-            Thread.Sleep(50);
-
-
-            Console.Beep(294, 500);
-            Thread.Sleep(50);
-            Console.Beep(262, 500);
-            Thread.Sleep(50);
-            Console.Beep(262, 500);
-            Thread.Sleep(25);
-            Console.Beep(294, 500);
-            Thread.Sleep(50);
-
         }
 
         public void Umirat()
